@@ -1,6 +1,15 @@
 package com.example.questnavigasimvvm_0262
 
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.questnavigasimvvm_0262.view.FormIsian
+import com.example.questnavigasimvvm_0262.view.TampilData
 
 enum class Navigasi{
     FormulirSaya,
@@ -9,7 +18,8 @@ enum class Navigasi{
 
 @Composable
 fun DataApp(
-    navController: NavHostController = rememberNavController()
+    navController: NavHostController = rememberNavController(),
+    navigate: NavHostController.(String) -> Unit
 ) {
     Scaffold { isiRuang ->
         NavHost(
