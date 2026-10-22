@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
-import androidx.compose.material3.DividerDefaults.Thickness
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.OutlinedTextField
@@ -23,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.questnavigasimvvm_0262.R
@@ -31,68 +31,79 @@ import com.example.questnavigasimvvm_0262.R
 @Composable
 fun FormIsian(
     jenisK: List<String> = listOf("Laki-laki", "Perempuan"),
-    OnSubmitBtnClick : () -> Unit
-){
-    Scaffold(modifier = Modifier,
+    OnSubmitBtnClick: () -> Unit
+) {
+    Scaffold(
+        modifier = Modifier,
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(R.string.home), color = Color.White) },
+                title = { Text(stringResource(id = R.string.home), color = Color.White) },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
-                    colorResource(R.color.teal_700))
-
+                    containerColor = colorResource(id = R.color.teal_700)
+                )
             )
         }
-    ){isiRuang ->
-        Column(modifier = Modifier.padding(isiRuang),
+    ) { isiRuang ->
+        Column(
+            modifier = Modifier.padding(isiRuang),
             verticalArrangement = Arrangement.Top,
-            horizontalAlignment = Alignment.CenterHorizontally) {
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             OutlinedTextField(
                 value = "",
                 singleLine = true,
                 modifier = Modifier
                     .padding(top = 20.dp)
                     .width(250.dp),
-                label = {Text(text= "Nama Lengkap")},
-                onValueChange = {}
+                label = { Text(text = stringResource(id = R.string.nama_lengkap)) },
+                onValueChange = {},
             )
-            HorizontalDivider(modifier = Modifier
-                .padding(20.dp)
-                .width(250.dp), thickness = Thickness, color = Color.Red)
-            Row{
-                jenisK.forEach {
-                        item->
+
+            HorizontalDivider(
+                modifier = Modifier
+                    .padding(all = dimensionResource(id = R.dimen.padding_small))
+                    .width(250.dp),
+                thickness = dimensionResource(id = R.dimen.thickness_divider),
+                color = Color.Red
+            )
+
+            Row {
+                jenisK.forEach { item ->
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         RadioButton(
                             selected = false,
-                            onClick = {item}
+                            onClick = { item }
                         )
                         Text(text = item)
                     }
                 }
             }
-            HorizontalDivider(modifier = Modifier
-                .padding(20.dp)
-                .width(250.dp),
-                thickness = 1.dp,
-                color = Color.Red
+
+            HorizontalDivider(
+                modifier = Modifier
+                    .padding(all = dimensionResource(id = R.dimen.padding_small))
+                    .width(250.dp),
+                thickness = dimensionResource(id = R.dimen.thickness_divider)
             )
+
             OutlinedTextField(
                 value = "",
                 singleLine = true,
-                modifier = Modifier
-                    .width(250.dp),
-                label = {Text(text= "Alamat")},
-                onValueChange = {}
+                modifier = Modifier.width(250.dp),
+                label = { Text(text = stringResource(id = R.string.alamat)) },
+                onValueChange = {},
             )
+
             Spacer(modifier = Modifier.height(30.dp))
+
             Button(
-                modifier = Modifier.fillMaxWidth(1f)
+                modifier = Modifier
+                    .fillMaxWidth(fraction = 1f)
                     .padding(all = 25.dp),
                 onClick = OnSubmitBtnClick
             ) {
-                Text(stringResource(R.string.submit))
+                Text(stringResource(id = R.string.submit))
             }
         }
-
     }
 }
