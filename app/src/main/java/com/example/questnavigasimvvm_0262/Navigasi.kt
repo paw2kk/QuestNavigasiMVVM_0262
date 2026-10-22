@@ -18,7 +18,7 @@ enum class Navigasi{
 
 @Composable
 fun DataApp(
-    navController: NavHostController = rememberNavController()
+    navController: NavHostController = rememberNavController(),
 ) {
     Scaffold { isiRuang ->
         NavHost(
