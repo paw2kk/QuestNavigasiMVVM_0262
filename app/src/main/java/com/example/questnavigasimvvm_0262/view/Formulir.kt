@@ -32,14 +32,16 @@ fun FormIsian(
     jenisK: List<String> = listOf("Laki-laki", "Perempuan"),
     OnSubmitBtnClick : () -> Unit
 ){
-    Scaffold (modifier= Modifier,
+    Scaffold(modifier = Modifier,
         topBar = {
             TopAppBar(
-                title = {Text(stringResource(id=R.string.home), color = Color.White)},
+                title = { Text(stringResource(R.string.home), color = Color.White) },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
-                    containerColor = colorResource(id = R.color.teal_700))
-            ) }
-    ){ isiRuang ->
+                    colorResource(R.color.teal_700))
+
+            )
+        }
+    ){isiRuang ->
         Column(modifier = Modifier.padding(isiRuang),
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally) {
@@ -81,7 +83,6 @@ fun FormIsian(
                 label = {Text(text= "Alamat")},
                 onValueChange = {}
             )
-
             Spacer(modifier = Modifier.height(30.dp))
             Button(
                 modifier = Modifier.fillMaxWidth(1f)
@@ -91,5 +92,6 @@ fun FormIsian(
                 Text(stringResource(R.string.submit))
             }
         }
+
     }
 }
